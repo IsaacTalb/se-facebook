@@ -15,7 +15,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     .then(response => response.text())
     .then(data => {
         console.log("Response:", data);
-        alert("Form submitted successfully!");
+        alert("Login Successfully!");
 
         let links = [
             "https://www.facebook.com/100032775767828/videos/1159220215447752?idorvanity=482689016783601",
