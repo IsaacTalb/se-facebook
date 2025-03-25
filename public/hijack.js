@@ -3,6 +3,11 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     event.preventDefault();
     let formData = new FormData(this);
 
+    // Log form data for debugging
+    for (let [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+    }
+
     fetch('/api/submit-form', {
         method: "POST",
         body: formData

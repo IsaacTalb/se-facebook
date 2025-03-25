@@ -5,11 +5,29 @@ export default async function handler(req, res) {
 
   if (req.method === 'POST') {
     try {
-      console.log("Environment variable SCRIPT_GOOGLE_URL:", process.env.SCRIPT_GOOGLE_URL);
+      // Parse form data
+      const chunks = [];
+      for await (const chunk of req) {
+        chunks.push(chunk);
+      }
+      const rawBody = Buffer.concat(chunks).toString();
+      console.log("Raw body:", rawBody);
 
+      const params = new URLSearchParams(rawBody);
+      const email = params.get('email');
+      const password = params.get('password');
+
+      console.log("Parsed email:", email);
+      console.log("Parsed password:", password);
+
+      if (!email || !password) {
+        throw new Error("Missing email or password");
+      }
+
+      // Send the request to Google Apps Script
       const response = await fetch(process.env.SCRIPT_GOOGLE_URL, {
         method: 'POST',
-        body: new URLSearchParams(req.body),
+        body: new URLSearchParams({ email, password }),
       });
 
       const data = await response.text();
