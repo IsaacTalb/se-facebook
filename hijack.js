@@ -2,7 +2,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     event.preventDefault();
     let formData = new FormData(this);
 
-    fetch(process.env.SCRIPT_GOOGLE_URL, {
+    fetch('/submit-form', {
         method: "POST",
         body: formData
     })
