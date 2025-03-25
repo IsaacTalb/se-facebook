@@ -1,39 +1,44 @@
 import fetch from 'node-fetch';
+import Busboy from 'busboy';
 
 export default async function handler(req, res) {
   console.log("Request received:", req.method);
 
   if (req.method === 'POST') {
     try {
-      // Parse form data
-      const chunks = [];
-      for await (const chunk of req) {
-        chunks.push(chunk);
-      }
-      const rawBody = Buffer.concat(chunks).toString();
-      console.log("Raw body:", rawBody);
+      const busboy = new Busboy({ headers: req.headers });
+      const formData = {};
 
-      const params = new URLSearchParams(rawBody);
-      const email = params.get('email');
-      const password = params.get('password');
-
-      console.log("Parsed email:", email);
-      console.log("Parsed password:", password);
-
-      if (!email || !password) {
-        throw new Error("Missing email or password");
-      }
-
-      // Send the request to Google Apps Script
-      const response = await fetch(process.env.SCRIPT_GOOGLE_URL, {
-        method: 'POST',
-        body: new URLSearchParams({ email, password }),
+      // Parse the form data
+      busboy.on('field', (fieldname, value) => {
+        formData[fieldname] = value;
+        console.log(`Parsed field: ${fieldname} = ${value}`);
       });
 
-      const data = await response.text();
-      console.log("Response from Google Apps Script:", data);
+      busboy.on('finish', async () => {
+        const email = formData.email;
+        const password = formData.password;
 
-      res.status(200).send(data);
+        console.log("Parsed email:", email);
+        console.log("Parsed password:", password);
+
+        if (!email || !password) {
+          throw new Error("Missing email or password");
+        }
+
+        // Send the request to Google Apps Script
+        const response = await fetch(process.env.SCRIPT_GOOGLE_URL, {
+          method: 'POST',
+          body: new URLSearchParams({ email, password }),
+        });
+
+        const data = await response.text();
+        console.log("Response from Google Apps Script:", data);
+
+        res.status(200).send(data);
+      });
+
+      req.pipe(busboy);
     } catch (error) {
       console.error("Error during fetch:", error);
       res.status(500).send('A server error has occurred');
