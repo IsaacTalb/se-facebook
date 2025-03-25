@@ -2,7 +2,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     event.preventDefault();
     let formData = new FormData(this);
 
-    fetch('/submit-form', {
+    fetch('/api/submit-form', { // Updated to point to the serverless function
         method: "POST",
         body: formData
     })
